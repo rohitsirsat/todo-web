@@ -10,4 +10,14 @@ app.use(
   })
 );
 
+app.use(express.json());
+
+// routes import
+// import userRouter from "./routes/user.routes.js";
+import todoRouter from "./routes/todo.routes.js";
+
+// routes declaration
+app.use("/api/v1/todos", todoRouter);
+// https://localhost:8000/api/v1/todos
+
 export { app };

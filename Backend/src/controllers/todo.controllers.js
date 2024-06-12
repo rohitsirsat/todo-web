@@ -1,7 +1,7 @@
-import { Todo } from "../models/todo.models";
-import { ApiError } from "../utils/ApiError";
-import { ApiResponse } from "../utils/ApiResponse";
-import { asyncHandler } from "../utils/asyncHandler";
+import { Todo } from "../models/todo.models.js";
+import { ApiError } from "../utils/ApiError.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
 const getAllTodos = asyncHandler(async (req, res) => {
   const { query, complete } = req.query;
@@ -31,7 +31,7 @@ const getAllTodos = asyncHandler(async (req, res) => {
 const getTodoById = asyncHandler(async (req, res) => {
   const { todoId } = req.params;
 
-  const todo = Todo.findById(todoId);
+  const todo = await Todo.findById(todoId);
 
   if (!todo) {
     throw new ApiError(404, "Todo does not exist");
@@ -80,7 +80,7 @@ const updateTodo = asyncHandler(async (req, res) => {
 
 const toggleTodoDoneStatus = asyncHandler(async (req, res) => {
   const { todoId } = req.params;
-  const todo = Todo.findById(todoId);
+  const todo = await Todo.findById(todoId);
 
   if (!todo) {
     throw new ApiError(404, "Todo does not exist");
@@ -103,7 +103,7 @@ const toggleTodoDoneStatus = asyncHandler(async (req, res) => {
 
 const deleteTodo = asyncHandler(async (req, res) => {
   const { todoId } = req.params;
-  const todo = Todo.findByIdAndDelete(todoId);
+  const todo = await Todo.findByIdAndDelete(todoId);
 
   if (!todo) {
     throw new ApiError(404, "Todo does not exist");

@@ -31,7 +31,8 @@ router
     mongoIdPthVariableValidator("todoId"),
     updateTodoValidator(),
     updateTodo
-  );
+  )
+  .delete(mongoIdPthVariableValidator("todoId"), deleteTodo);
 router
   .route("/toggle/status/:todoId")
   .patch(mongoIdPthVariableValidator("todoId"), toggleTodoDoneStatus);
