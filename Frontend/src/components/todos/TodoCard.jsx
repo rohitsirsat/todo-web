@@ -7,6 +7,7 @@ import { deleteTodoApi, toggleTodoStatusApi } from "../../api/index.js";
 import { useTodo } from "../../context/TodoContext.jsx";
 // import { TodoInterface } from "../../utils/constants.js";
 import { classNames, requestHandler } from "../../utils/requestHandler.js";
+import DetailAndEditModal from "./DetailAndEditModal.jsx";
 
 const TodoCard = ({ todo }) => {
   const [deleteLoading, setDeleteLoading] = useState(false);

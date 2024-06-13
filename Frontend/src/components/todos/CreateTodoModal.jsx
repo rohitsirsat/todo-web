@@ -45,7 +45,7 @@ const CreateTodoModal = ({ onClose }) => {
           Create A New Task
         </h1>
 
-        <form onSubmit={onsubmit} className="flex flex-col gap-4 w-full">
+        <form onSubmit={onSubmit} className="flex flex-col gap-4 w-full">
           <Input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
