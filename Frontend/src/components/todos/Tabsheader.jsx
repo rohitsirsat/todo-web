@@ -4,15 +4,15 @@ import Options from "../Options.jsx";
 import Button from "../Button.jsx";
 import { FaCirclePlus } from "react-icons/fa6";
 
-const Tabsheader = ({
+const TabsHeader = ({
   openCreateTodoModal,
   selectedOption,
-  setSelectedOptio,
+  setSelectedOption,
   query,
 }) => {
   const { getFilteredTodos, todos } = useTodo();
 
-  const optionList = [
+  const optionsList = [
     {
       title: "All Todos",
       slug: "all",
@@ -41,14 +41,14 @@ const Tabsheader = ({
       </div>
 
       <div className="w-full flex justify-around max-w-[600px] gap-4 my-6">
-        {optionList.map((option) => (
+        {optionsList.map((option) => (
           <Options
             isActive={selectedOption === option.slug}
             key={option.slug}
             title={option.title}
             count={option.slug === selectedOption ? todos.length : null}
             onClick={async () => {
-              setSelectedOptio(option.slug);
+              setSelectedOption(option.slug);
               let complete =
                 option.slug === "pending"
                   ? false
@@ -64,4 +64,4 @@ const Tabsheader = ({
   );
 };
 
-export default Tabsheader;
+export default TabsHeader;
