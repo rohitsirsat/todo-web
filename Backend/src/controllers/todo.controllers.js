@@ -9,7 +9,7 @@ const getAllTodos = asyncHandler(async (req, res) => {
     {
       $match:
         query?.length > 0
-          ? { title: { $regex: query.trim(), $options: "i" } }
+          ? { title: { $regex: query.trim(), $options: "i" } } // here $options: "i" means case insensitive
           : {},
     },
     {
@@ -51,7 +51,7 @@ const createTodo = asyncHandler(async (req, res) => {
 
   return res
     .status(201)
-    .json(new ApiResponse(201, todo, "Todo created successfully"));
+    .json(new ApiResponse(201, todo.title, "Todo created successfully"));
 });
 
 const updateTodo = asyncHandler(async (req, res) => {
@@ -96,7 +96,7 @@ const toggleTodoDoneStatus = asyncHandler(async (req, res) => {
       new ApiResponse(
         200,
         todo,
-        "Todo marked" + todo.isComplete ? "done" : "undone"
+        `Todo marked" ${todo.isComplete ? "done" : "undone"}`
       )
     );
 });
