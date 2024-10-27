@@ -33,7 +33,14 @@ export const requestHandler = async (
   }
 };
 
-// A utility function to concatenate CSS class names with proper spacing
+/*
+How it Works:
+It receives multiple class names as arguments.
+It filters out any empty strings (or other falsey values, like undefined or null).
+It joins the remaining class names with a single space.
+
+A utility function to concatenate CSS class names with proper spacing
+*/
 export const classNames = (...className: string[]) => {
   // Filter out any empty class names and join them with a space
   return className.filter(Boolean).join(" ");
